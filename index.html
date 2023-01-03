@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Aliyah's Coffee</title>
+
+    <link rel="icon" sizes="192x192" href="images/icon.png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-orange.min.css">
+
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    body::before {
+        background-size: cover;
+        background-attachment: fixed;
+        content: '';
+        will-change: transform;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        position: fixed;
+        background-image: url('images/bg.jpg');
+    }
+
+
+    body .demo-blog {
+      font-family: 'Roboto', 'Helvetica', sans-serif;
+    }
+
+    .demo-blog .demo-blog__posts {
+      max-width: 900px;
+      padding: 0;
+      display: flex;
+      width: 100%;
+      margin: 0 auto;
+              flex-shrink: 0;
+    }
+
+    .demo-blog.mdl-layout .mdl-layout__content {
+      padding-top: 230px;
+      position: relative;
+    }
+    .demo-blog .mdl-card {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 360px;
+    }
+    .demo-blog .mdl-card__title {
+      padding: 16px;
+      flex-grow: 1;
+    }
+    .demo-blog .mdl-card__media {
+      box-sizing: border-box;
+      background-size: cover;
+      padding: 24px;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row;
+      align-items: flex-end;
+      cursor: pointer;
+    }
+    .demo-blog .mdl-card__media a,
+    .demo-blog .mdl-card__title a {
+      color: inherit;
+    }
+    .demo-blog .mdl-card__supporting-text {
+      width: 100%;
+      padding: 16px;
+      min-height: 64px;
+      display: flex;
+              align-items: center;
+    }
+    .demo-blog .mdl-card__supporting-text strong {
+      font-weight: 400;
+    }
+    .demo-blog .mdl-card__media ~ .mdl-card__supporting-text {
+      min-height: 64px;
+    }
+    .demo-blog .mdl-card__supporting-text:not(:last-child) {
+      box-sizing: border-box;
+      min-height: 76px;
+    }
+    .demo-blog:not(.demo-blog--blogpost) .mdl-card__supporting-text ~ .mdl-card__supporting-text {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .demo-blog .mdl-card__actions:first-child {
+      margin-left: 0;
+    }
+    .demo-blog .meta {
+      box-sizing: border-box;
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      height: auto;
+    }
+    .demo-blog .meta > .meta__favorites{
+      flex-direction: row;
+      margin: 0 8px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .demo-blog .meta > .meta__favorites .material-icons {
+      font-size: 2em;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    .demo-blog .mdl-card .meta.meta--fill {
+      justify-content: space-between;
+    }
+    .demo-blog .meta > *:first-child {
+      margin-right: 16px;
+    }
+    .demo-blog .meta > * {
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-blog.is-small-screen .demo-blog__posts > .mdl-card.coffee-pic {
+      order: 0;
+    }
+    .demo-blog.is-small-screen .demo-blog__posts > .mdl-card.something-else {
+      order: -1;
+    }
+    .demo-blog .coffee-pic .mdl-card__media {
+      background-image: url('images/coffee.jpg');
+    }
+    .demo-blog .something-else .mdl-card__media {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .demo-blog .something-else > button {
+      position: absolute;
+      top: 0;
+      right: 28px;
+      transform: translate(0px, -28px);
+    }
+    .demo-blog .something-else .mdl-card__media {
+      font-size: 13px;
+      font-weight: 500;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+    .demo-blog .something-else .mdl-card__media img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 10px;
+    }
+    .demo-blog .something-else .mdl-card__supporting-text {
+      background-color: #F5F5F5;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    .demo-blog .on-the-road-again .mdl-card__media {
+      background-image: url('images/coffee-thumb.jpg');
+    }
+    .demo-blog .shopping .mdl-card__media {
+      background-image: url('images/brew.jpg');
+    }
+    .demo-blog .demo-blog__posts > .demo-nav {
+      margin: 12px 15px;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+      color: white;
+      font-weight: 500;
+    }
+    .demo-blog .demo-blog__posts > .demo-nav > .demo-nav__button {
+      color: white;
+      text-decoration: none;
+    }
+    .demo-blog .demo-blog__posts > .demo-nav .mdl-button {
+      color: rgba(0,0,0,0.54);
+      background-color: white;
+    }
+    .demo-blog .demo-blog__posts > .demo-nav > .demo-nav__button:first-child .mdl-button {
+      margin-right: 16px;
+    }
+    .demo-blog .demo-blog__posts > .demo-nav > .demo-nav__button:last-child .mdl-button {
+      margin-left: 16px;
+    }
+    .demo-blog .mdl-card > a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: inherit;
+    }
+    .demo-blog .mdl-card h3 {
+      margin: 0;
+    }
+    .demo-blog .mdl-card h3 a {
+      text-decoration: none;
+    }
+    .demo-blog .mdl-card h3.quote:before, .demo-blog .mdl-card h3.quote:after {
+      display: block;
+      font-size: 3em;
+      margin-top: 0.5em;
+    }
+    .demo-blog .mdl-card h3.quote:before {
+      content: '“';
+    }
+    .demo-blog .mdl-card h3.quote:after {
+      content: '”';
+    }
+   
+   
+    .demo-blog .something-else {
+      overflow: visible;
+      z-index: 10;
+    }
+    .demo-blog .amazing .mdl-card__title {
+      background-color: #263238;
+      background-color: rgb(255,171,64);
+    }
+    .demo-blog .minilogo {
+      width: 44px;
+      height: 44px;
+      background-image: url('images/icon.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      border-radius: 22px;
+      background-color: #F5F5F5;
+      border: 3px solid #F5F5F5;
+    }
+
+    .mdl-grid {
+      display: flex !important;
+    }
+
+    .social-btn {
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      margin: 0 16px;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      opacity: 0.46;
+      border-radius: 2px;
+    }
+    .social-btn__twitter {
+      background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_twitter_black_24dp.png');
+    }
+    .social-btn__blogger {
+      background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_facebook_black_24dp.png');
+    }
+    .social-btn__gplus {
+      background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_gplus_black_24dp.png');
+    }
+    .social-btn__share {
+      color: rgba(0, 0, 0, 0.54);
+      background: transparent;
+    }
+
+    .demo-blog .mdl-mini-footer {
+      margin-top: 80px;
+      height: 120px;
+      padding: 40px;
+              align-items: center;
+      background-color: white;
+      box-sizing: border-box;
+    }
+    table td > *:not(button) {
+      width: 100%;
+      font-size: 16px;
+      border-radius: 0;
+      border: 1px solid #ccc;
+      padding: 8px;
+      font-family: inherit;
+    }
+    table td > button {
+      border-radius: 0;
+      border: 1px solid rgb(255,171,64);
+      background: rgb(255,171,64);
+      color: #fff;
+      padding: 10px 15px;
+      font-size: 18px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+      <main class="mdl-layout__content">
+        <div class="demo-blog__posts mdl-grid">
+          <div class="mdl-card coffee-pic mdl-cell mdl-cell--8-col">
+            <div class="mdl-card__media mdl-color-text--grey-50">
+              <h1 style="font-size: 32px; margin-bottom: 0;">
+                <a href="#" style="text-decoration: none;">Aliyah's Coffee</a>
+              </h1>
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+              <div class="minilogo"></div>
+              <div>
+                <strong>Your coffee of choice</strong>
+                <span>Serving it to you on your preference</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop">
+
+            <div class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
+              <img src="images/coffee-cup.jpg">
+              Made from farm fresh coffee beans
+            </div>
+            <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
+              <div>
+                <strong>Serving you only the best!</strong>
+              </div>
+              <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="menubtn">
+                <li class="mdl-menu__item"><a href="#about">About</a></li>
+                <li class="mdl-menu__item"><a href="#testimonial">Testimonial</a></li>
+                <li class="mdl-menu__item"><a href="#our-coffee">Our Coffee</a></li>
+                <li class="mdl-menu__item"><a href="#social">Social Media</a></li>
+              </ul>
+              <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                <i class="material-icons" role="presentation">more_vert</i>
+                <span class="visuallyhidden">show menu</span>
+              </button>
+            </div>
+          </div>
+          <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" id="about">
+            <div class="mdl-card__media mdl-color-text--grey-50" style="padding-top: 7rem;">
+              <h3><a href="#" style="color: rgb(255,171,64);">Coffee for everyone</a></h3>
+            </div>
+            <div class="mdl-color-text--grey-600 mdl-card__supporting-text" style="display: block">
+              <p>"Almost all my middle-aged and elderly acquaintances, including me, feel about 25, unless we haven't had our coffee, in which case we feel 107." <br>- Martha Beck</p>
+              <p>"We want to do a lot of stuff; we're not in great shape. We didn't get a good night's sleep. We're a little depressed. Coffee solves all these problems in one delightful little cup."<br>- Jerry Seinfeld</p>
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+              <div class="minilogo"></div>
+              <div>
+                <strong>Only the best </strong>
+                <span>For you are the best</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-card amazing mdl-cell mdl-cell--12-col" id="testimonial">
+            <div class="mdl-card__title mdl-color-text--grey-50">
+              <h3 class="quote"><a href="#">May your coffee be strong and your Monday be short.</a></h3>
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+              <div class="minilogo"></div>
+              <div>
+                <strong>Today is good mood</strong>
+                <span>Sponsored by coffee</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-card shopping mdl-cell mdl-cell--12-col" id="our-coffee">
+            <div class="mdl-card__media mdl-color-text--grey-50" style="padding-top: 7rem;">
+              <h3><a href="#">You’re brew-tiful.</a></h3>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600" style="text-align: center; justify-content: center;">
+             <img src="images/coffee-menu.jpg" alt="Coffee Menu">
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+              <div class="minilogo"></div>
+              <div>
+                <strong>Coffee is the best medicine.</strong>
+                <span>It’s coffee o’clock.</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-card mdl-cell mdl-cell--12-col" id="contact">
+            <div class="mdl-card__media mdl-color-text--grey-50 " style="padding-top: 7rem">
+              <h3><a href="#">Contact Us</a></h3>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              <table style="width: 350px;">
+                <tr>
+                  <td><input type="text" placeholder="Email"></td>
+                </tr>
+                <tr>
+                  <td><textarea name="message" id="message" cols="30" rows="4" placeholder="Message"></textarea></td>
+                </tr>
+                <tr>
+                  <td><button>Submit</button></td>
+                </tr>
+              </table>
+              
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+              <div class="minilogo"></div>
+              <div>
+                <strong>Coffee is the drink of your soul</strong>
+                <span>Coffee lover? We got you always!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="mdl-mini-footer" id="social">
+          <div class="mdl-mini-footer--left-section">
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
+              <span class="visuallyhidden">Twitter</span>
+            </button>
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
+              <span class="visuallyhidden">Facebook</span>
+            </button>
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
+              <span class="visuallyhidden">Google Plus</span>
+            </button>
+          </div>
+          <div class="mdl-mini-footer--right-section">
+            <button class="mdl-mini-footer--social-btn social-btn__share">
+              <i class="material-icons" role="presentation">share</i>
+              <span class="visuallyhidden">share</span>
+            </button>
+          </div>
+        </footer>
+      </main>
+      <div class="mdl-layout__obfuscator"></div>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
+</html>
